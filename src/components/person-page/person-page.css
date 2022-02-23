@@ -1,0 +1,13 @@
+.list { 
+    width: 550px;
+}
+.person {
+    margin-left: 25px;
+    width: 650px;
+}
+.page {
+    margin: 10px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+}

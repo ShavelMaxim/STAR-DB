@@ -1,0 +1,14 @@
+.starship-list { 
+    width: 550px;
+}
+.starship {
+    margin-left: 25px;
+    
+   
+}
+.page {
+    margin: 10px;
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+}

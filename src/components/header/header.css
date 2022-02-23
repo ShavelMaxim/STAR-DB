@@ -1,0 +1,22 @@
+.header {
+    width: 250px;
+    height: 50px;
+    float: left;
+    margin: 10px 10px 0px 10px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif ;
+}
+.starDB {
+    font-size: 36px;
+}
+.category {
+    padding: 10px 5px 5px;
+    font-size: 18px;
+    color:rgb(18, 196, 127);
+    font-weight: 700;
+}
+.wrapper {
+    height: 100px;
+    margin: 10px 10px 5px;
+    display: flex;
+}
+   

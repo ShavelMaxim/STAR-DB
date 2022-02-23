@@ -1,0 +1,17 @@
+.img {
+    width: 200px;
+    height: 275px;
+    border-radius: 10px;
+    float: left;
+    margin: 5px 10px 5px 5px;
+    
+}
+.btn-species-random {
+    width: 200px;
+    height: 35px;
+    margin-left: 5px;
+    color: rgb(18, 196, 127);
+}
+.species {
+    margin: 5px 20px 5px 10px;
+}
