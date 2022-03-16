@@ -1,19 +1,28 @@
-import React from 'react'
-import ItemList from './item-list/item-list'
+import React, { Component } from 'react'
 import PersonDetails from './person-details/person-details'
 import './person-page.css'
+import ItemList from '../item-list'
+import Row from '../row'
+import ErrorBoundry from '../error-boundry/error-boundry'
+import ErrorButton from '../error-button'
 
-const PersonPage = ({ personId, onItemSelected }) => {
-  return (
-    <div className='page'>
-      <span className='list'>
-        <ItemList onItemSelected={onItemSelected} />
-      </span>
-
-      <span className='person'>
+export default class PersonPage extends Component {
+  state = {
+    hasError: false
+  }
+  render () {
+    const { personId, onItemSelected, getData } = this.props
+    const itemList = (
+      <ItemList onItemSelected={onItemSelected} getData={getData}>
+        {i => i.name}
+      </ItemList>
+    )
+    const personDetails = (
+      <ErrorBoundry>
         <PersonDetails personId={personId} />
-      </span>
-    </div>
-  )
+        <ErrorButton />
+      </ErrorBoundry>
+    )
+    return <Row left={itemList} rigth={personDetails} />
+  }
 }
-export default PersonPage

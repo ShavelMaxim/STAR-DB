@@ -3,6 +3,7 @@ import './random-species.css'
 import SwapiService from '../../service/swapi-service'
 import Spinner from '../spinner'
 import ErorrIndecator from '../error-indicator/error-indicator'
+import ErrorButton from '../error-button'
 
 export default class RandomSpecies extends Component {
   swapiService = new SwapiService()
@@ -10,7 +11,8 @@ export default class RandomSpecies extends Component {
   state = {
     species: {},
     loading: true,
-    error: false
+    error: false,
+    hasError: false
   }
   componentDidMount () {
     this.upDateSpecies()
@@ -35,7 +37,16 @@ export default class RandomSpecies extends Component {
   onRandomSpecies = () => {
     this.upDateSpecies()
   }
+  componentDidCatch (error, info) {
+    debugger
+    this.setState({
+      hasError: true
+    })
+  }
   render () {
+    if (this.state.hasError) {
+      return <ErorrIndecator />
+    }
     const { species, loading, error } = this.state
     const hasData = !(loading || error)
     const errorMessage = error ? <ErorrIndecator /> : null
@@ -92,6 +103,7 @@ const SpeciesView = ({ species, onRandomSpecies }) => {
         >
           <b>species random</b>
         </button>
+        <ErrorButton />
       </div>
     </React.Fragment>
   )

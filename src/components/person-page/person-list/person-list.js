@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import './item-list.css'
+import './person-list.css'
 import SwapiService from '../../../service/swapi-service'
 import Spinner from '../../spinner'
 import ErorrIndecator from '../../error-indicator/error-indicator'
-export default class ItemList extends Component {
+export default class PersonList extends Component {
   swapiService = new SwapiService()
 
   state = {

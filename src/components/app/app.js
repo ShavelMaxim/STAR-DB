@@ -5,30 +5,21 @@ import PersonPage from '../person-page'
 import StarshipPage from '../starship-page'
 import PlanetPage from '../planet-page'
 import RandomSpecies from '../random-species'
+import SwapiService from '../../service/swapi-service'
 
 export default class App extends Component {
   state = {
-    selectedPerson: Math.floor(Math.random() * 82) + 1,
-    selectedStarship: 5,
-    selectedPlanet: Math.floor(Math.random() * 19) + 2,
+    selectedItem: Math.floor(Math.random() * 9 + 3),
     selectedCategory: 1
   }
+  swapiService = new SwapiService()
 
-  onPersonSelected = id => {
+  onItemSelected = id => {
     this.setState({
-      selectedPerson: id
+      selectedItem: id
     })
   }
-  onStarshipSelected = id => {
-    this.setState({
-      selectedStarship: id
-    })
-  }
-  onPlanetSelected = id => {
-    this.setState({
-      selectedPlanet: id
-    })
-  }
+
   onCategorySelected = id => {
     this.setState({
       selectedCategory: id
@@ -41,22 +32,25 @@ export default class App extends Component {
       if (selectedCategory === 1) {
         return (
           <PersonPage
-            personId={this.state.selectedPerson}
-            onItemSelected={this.onPersonSelected}
+            personId={this.state.selectedItem}
+            onItemSelected={this.onItemSelected}
+            getData={this.swapiService.getAllPeople}
           />
         )
       } else if (selectedCategory === 2) {
         return (
           <PlanetPage
-            planetId={this.state.selectedPlanet}
-            onPlanetSelected={this.onPlanetSelected}
+            planetId={this.state.selectedItem}
+            onItemSelected={this.onItemSelected}
+            getData={this.swapiService.getAllPlanets}
           />
         )
       } else if (selectedCategory === 3) {
         return (
           <StarshipPage
-            starshipId={this.state.selectedStarship}
-            onStarshipSelected={this.onStarshipSelected}
+            starshipId={this.state.selectedItem}
+            onItemSelected={this.onItemSelected}
+            getData={this.swapiService.getAllStarships}
           />
         )
       } else return
